@@ -30,7 +30,7 @@ function App() {
      - display todo component - ok
      - display todo from data - ok
      - add todo - ok
-     - remove todo
+     - remove todo - ok
     */
 
     /*
