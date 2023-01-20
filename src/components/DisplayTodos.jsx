@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import TodoComponent from './TodoComponent';
-
+import { MainContext } from '../Provider';
+import { Row, Col } from 'antd';
 
 /*
 
@@ -17,8 +18,22 @@ import TodoComponent from './TodoComponent';
     })
 */
 
-const DisplayTodo = ({ todos, onClickRemove }) => {
-    return todos.map((item, index) => <TodoComponent todo={item.todo} id={item.id} onClickRemove={onClickRemove}/>);
+const DisplayTodo = () => {
+    const { todos, onClickRemove } = useContext(MainContext);
+    const renderedTodos = todos.map((item, index) => {
+        return (
+            <Col span={24}>
+                <TodoComponent todo={item.todo} id={item.id} onClickRemove={onClickRemove} />
+            </Col>
+
+        );
+    });
+
+    return (
+        <Row style={{ width: '100%' }} gap={[25, 25]}>
+            {renderedTodos}
+        </Row>
+    );
 };
 
 export default DisplayTodo;

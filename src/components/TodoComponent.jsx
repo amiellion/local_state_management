@@ -1,4 +1,6 @@
-
+import { Card } from "antd";
+import { useContext } from "react";
+import { MainContext } from "../Provider";
 /*
     Object destructuring
     props = {
@@ -16,16 +18,12 @@
 
 */
 
-const TodoComponent = ({ todo, id, onClickRemove }) => {
+const TodoComponent = ({ todo, id }) => {
+    const { onClickRemove } = useContext(MainContext);
 
     return (
+        <Card>
 
-        <div style={{
-            border: '1px solid #ccc',
-            borderRadius: 5,
-            textAlign: 'center',
-            padding: 10,
-        }}>
             <p style={{ margin: 5 }}>Todo Name: {todo}</p>
             <p style={{ margin: 5 }}>Todo ID: {id}</p>
             <button
@@ -34,7 +32,7 @@ const TodoComponent = ({ todo, id, onClickRemove }) => {
                 }}
                 onClick={() => onClickRemove(id)}
             >Remove Todo</button>
-        </div>
+        </Card>
     );
 };
 
