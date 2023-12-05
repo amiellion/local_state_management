@@ -1,36 +1,34 @@
+//@dependencies
 import { Card } from "antd";
-import { useContext } from "react";
-import { MainContext } from "../Provider";
-/*
-    Object destructuring
-    props = {
+import { useDispatch } from "react-redux";
+
+//store
+import { TODO_SLICE_ACTIONS } from "../store/todo/slice";
+
+// props -> object
+/* 
+    {
         todo,
         id
     }
-    
-    const myprops = props;
-    const { todo, id } = myprops;
-
-
-    Array Destructuring
-    const myArray = [props.id, props.todo];
-    const [id, todo] = myArray;
-
 */
-
 const TodoComponent = ({ todo, id }) => {
-    const { onClickRemove } = useContext(MainContext);
+
+    // redux hook -> needed in order to execute actions from redux slice
+    const dispatch = useDispatch();
+    const onClickRemove = () => {
+        dispatch(TODO_SLICE_ACTIONS.removeTodo(id))
+    };
 
     return (
         <Card>
-
             <p style={{ margin: 5 }}>Todo Name: {todo}</p>
             <p style={{ margin: 5 }}>Todo ID: {id}</p>
             <button
                 style={{
                     backgroundColor: 'red'
                 }}
-                onClick={() => onClickRemove(id)}
+                onClick={onClickRemove}
             >Remove Todo</button>
         </Card>
     );

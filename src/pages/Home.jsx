@@ -1,9 +1,11 @@
+//componentss
+import PageContainer from "../components/PageContainer";
 
 function Home() {
     return (
-        <div>
-            Home Pages
-        </div>
+        <PageContainer>
+            Home
+        </PageContainer>
     );
 }
 
