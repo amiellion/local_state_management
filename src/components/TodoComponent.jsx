@@ -1,23 +1,18 @@
+//@dependencies
 import { Card } from "antd";
 import { useContext } from "react";
+
+//store
 import { MainContext } from "../Provider";
-/*
-    Object destructuring
-    props = {
+
+
+// props -> object
+/* 
+    {
         todo,
         id
     }
-    
-    const myprops = props;
-    const { todo, id } = myprops;
-
-
-    Array Destructuring
-    const myArray = [props.id, props.todo];
-    const [id, todo] = myArray;
-
 */
-
 const TodoComponent = ({ todo, id }) => {
     const { onClickRemove } = useContext(MainContext);
 

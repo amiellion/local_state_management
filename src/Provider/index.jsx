@@ -7,6 +7,7 @@ export const MainContext = createContext();
 function MainStore({ children }) {
 
 
+    // initialize State Values
     const [todos, setTodos] = useState([
         {
             todo: 'Todo Sample 1',
@@ -14,33 +15,39 @@ function MainStore({ children }) {
         },
         {
             todo: 'Todo Sample 2',
-            id: 'todo1',
+            id: 'todo2',
         }
     ]);
-    const onClickAdd = () => {
+    const onClickAdd = (value) => {
 
         setTodos(state => {
-            const state2 = [...state];
-            state2.push({
-                todo: 'Todo Sample 3',
+
+            //copy current state
+            const newState = [...state];
+
+            //add new element in the new state
+            newState.push({
+                todo: value || "Todo Sample 3",
                 id: uuidv4(),
             });
-            return state2;
+
+            //return new state
+            return newState;
         });
     };
 
     const onClickRemove = (id) => {
         setTodos(state => {
-            const filteredArray = state.filter((item, index) => item.id !== id);
-            return filteredArray;
+            const filteredArray = state.filter((item, index) => item.id !== id); // remove todo with x ID
+            return filteredArray; // return new state
         });
     };
 
-
+    // initialize state values for user
     const [userProfile, setUserProfile] = useState({
-        name: "",
-        age: "",
-        address: ""
+        name: "Default Name",
+        age: "15",
+        address: "#555 Sardines"
     });
     return (
         <MainContext.Provider
